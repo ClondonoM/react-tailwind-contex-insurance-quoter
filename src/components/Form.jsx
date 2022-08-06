@@ -1,6 +1,9 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { BRANDS, YEARS, PLANS } from '../constants';
+import QouterContext from '../context/QouterProvider';
 const Form = () => {
+  const { hola } = useContext(QouterContext);
+  console.log(hola);
   return (
     <>
       <form action=''>

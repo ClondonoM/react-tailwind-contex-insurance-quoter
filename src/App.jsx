@@ -1,7 +1,12 @@
+import { QouterProvider } from './context/QouterProvider';
 import AppInsurance from './components/AppInsurance';
 
 function App() {
-  return <AppInsurance />;
+  return (
+    <QouterProvider>
+      <AppInsurance />
+    </QouterProvider>
+  );
 }
 
 export default App;
