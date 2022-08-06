@@ -1,5 +1,7 @@
+import AppInsurance from './components/AppInsurance';
+
 function App() {
-  return <h1>quoter</h1>;
+  return <AppInsurance />;
 }
 
 export default App;
