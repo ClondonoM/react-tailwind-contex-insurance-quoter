@@ -1,11 +1,13 @@
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import { BRANDS, YEARS, PLANS } from '../constants';
-import QouterContext from '../context/QouterProvider';
+import useQuoter from '../hooks/useQuoter';
 const Form = () => {
-  const { hola } = useContext(QouterContext);
-  console.log(hola);
+  const { modal, setModal } = useQuoter();
+  console.log(modal);
+
   return (
     <>
+      <button onClick={() => setModal(!modal)}>Cambiar Modal de Context</button>
       <form action=''>
         <div className='my-5'>
           <label

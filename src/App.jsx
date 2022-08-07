@@ -1,11 +1,11 @@
-import { QouterProvider } from './context/QouterProvider';
+import { QuoterProvider } from './context/QuoterProvider';
 import AppInsurance from './components/AppInsurance';
 
 function App() {
   return (
-    <QouterProvider>
+    <QuoterProvider>
       <AppInsurance />
-    </QouterProvider>
+    </QuoterProvider>
   );
 }
 
