@@ -3,10 +3,19 @@ import { useState, createContext } from 'react';
 const QuoterContext = createContext();
 
 const QuoterProvider = ({ children }) => {
-  const [modal, setModal] = useState(false);
-
+  const [data, setData] = useState({
+    brand: '',
+    year: '',
+    plan: '',
+  });
+  const handleChangeData = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
-    <QuoterContext.Provider value={{ modal, setModal }}>
+    <QuoterContext.Provider value={{ handleChangeData, data }}>
       {children}
     </QuoterContext.Provider>
   );
