@@ -1,14 +1,23 @@
 import { Fragment } from 'react';
 import { BRANDS, YEARS, PLANS } from '../constants';
 import useQuoter from '../hooks/useQuoter';
+import Error from './Error';
 const Form = () => {
-  const { modal, setModal } = useQuoter();
-  console.log(modal);
+  const { data, handleChangeData, error, setError } = useQuoter();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    if (Object.values(data).includes('')) {
+      setError('All fields are required');
+    } else {
+      setError('');
+    }
+  };
   return (
     <>
-      <button onClick={() => setModal(!modal)}>Cambiar Modal de Context</button>
-      <form action=''>
+      {error && <Error />}
+
+      <form onSubmit={handleSubmit}>
         <div className='my-5'>
           <label
             htmlFor='brand'
@@ -20,6 +29,8 @@ const Form = () => {
           <select
             name='brand'
             className='w-full p-3 bg-white border border-gray-200'
+            onChange={handleChangeData}
+            value={data.brand}
           >
             <option value=''>--Select Brand--</option>
             {BRANDS.map((brand) => (
@@ -31,15 +42,17 @@ const Form = () => {
         </div>
         <div className='my-5'>
           <label
-            htmlFor='brand'
+            htmlFor='year'
             className='block mb-3 font-bold text-gray-400 uppercase'
           >
             {' '}
             Year{' '}
           </label>
           <select
-            name='brand'
+            name='year'
             className='w-full p-3 bg-white border border-gray-200'
+            onChange={handleChangeData}
+            value={data.year}
           >
             <option value=''>--Select Year--</option>
             {YEARS.map((year) => (
@@ -52,7 +65,7 @@ const Form = () => {
 
         <div className='my-5'>
           <label
-            htmlFor='brand'
+            htmlFor='plan'
             className='block mb-3 font-bold text-gray-400 uppercase'
           >
             {' '}
@@ -63,7 +76,12 @@ const Form = () => {
           {PLANS.map((plan) => (
             <Fragment key={plan.id}>
               <label>{plan.name}</label>
-              <input type='radio' name='plan' value={plan.id} />
+              <input
+                type='radio'
+                name='plan'
+                value={plan.id}
+                onChange={handleChangeData}
+              />
             </Fragment>
           ))}
         </div>
