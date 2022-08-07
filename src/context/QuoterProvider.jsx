@@ -35,7 +35,7 @@ const QuoterProvider = ({ children }) => {
     setTimeout(() => {
       setResult(result);
       setLoading(false);
-    }, 2000);
+    }, 1500);
   };
 
   return (
