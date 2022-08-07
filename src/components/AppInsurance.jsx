@@ -1,5 +1,9 @@
 import Form from './Form';
+import useQuoter from '../hooks/useQuoter';
+
 const AppInsurance = () => {
+  const { modal } = useQuoter();
+  console.log(modal);
   return (
     <>
       <header className='my-10'>
