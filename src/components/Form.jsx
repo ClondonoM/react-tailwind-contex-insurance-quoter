@@ -3,7 +3,8 @@ import { BRANDS, YEARS, PLANS } from '../constants';
 import useQuoter from '../hooks/useQuoter';
 import Error from './Error';
 const Form = () => {
-  const { data, handleChangeData, error, setError } = useQuoter();
+  const { data, handleChangeData, error, setError, quoteInsurance } =
+    useQuoter();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -12,6 +13,7 @@ const Form = () => {
     } else {
       setError('');
     }
+    quoteInsurance();
   };
   return (
     <>
