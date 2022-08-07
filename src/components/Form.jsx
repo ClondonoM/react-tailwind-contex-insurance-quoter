@@ -1,12 +1,23 @@
 import { Fragment } from 'react';
 import { BRANDS, YEARS, PLANS } from '../constants';
 import useQuoter from '../hooks/useQuoter';
+import Error from './Error';
 const Form = () => {
-  const { data, handleChangeData } = useQuoter();
+  const { data, handleChangeData, error, setError } = useQuoter();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (Object.values(data).includes('')) {
+      setError('All fields are required');
+    } else {
+      setError('');
+    }
+  };
   return (
     <>
-      <button onClick={() => setModal(!modal)}>Cambiar Modal de Context</button>
-      <form action=''>
+      {error && <Error />}
+
+      <form onSubmit={handleSubmit}>
         <div className='my-5'>
           <label
             htmlFor='brand'
