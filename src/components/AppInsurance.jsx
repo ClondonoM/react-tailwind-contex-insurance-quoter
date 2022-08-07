@@ -2,7 +2,7 @@ import Form from './Form';
 import useQuoter from '../hooks/useQuoter';
 
 const AppInsurance = () => {
-  const { result } = useQuoter();
+  const { result, loading } = useQuoter();
   console.log(result);
   return (
     <>
@@ -13,7 +13,7 @@ const AppInsurance = () => {
       </header>
       <main className='bg-white md:w-2/3 lg:w2/4 mx-auto shadow rounded-lg p-10'>
         <Form />
-        <p>{result}</p>
+        {loading ? <p>Loading...</p> : <p>{result}</p>}
       </main>
     </>
   );

@@ -16,6 +16,8 @@ const QuoterProvider = ({ children }) => {
   });
   const [error, setError] = useState('');
   const [result, setResult] = useState(0);
+  const [loading, setLoading] = useState(false);
+
   const handleChangeData = (e) => {
     setData({
       ...data,
@@ -29,7 +31,11 @@ const QuoterProvider = ({ children }) => {
     result -= (yearDifference * 3 * result) / 100;
     result = brandFactor(data.brand) * result;
     result = moneyFormat(planFactor(data.plan) * result);
-    setResult(result);
+    setLoading(true);
+    setTimeout(() => {
+      setResult(result);
+      setLoading(false);
+    }, 1500);
   };
 
   return (
@@ -41,6 +47,7 @@ const QuoterProvider = ({ children }) => {
         setError,
         quoteInsurance,
         result,
+        loading,
       }}
     >
       {children}
