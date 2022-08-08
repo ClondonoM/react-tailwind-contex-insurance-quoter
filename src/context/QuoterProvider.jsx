@@ -26,7 +26,7 @@ const QuoterProvider = ({ children }) => {
   };
 
   const quoteInsurance = () => {
-    let result = 2000;
+    let result = 1500;
     const yearDifference = getYearDifference(data.year);
     result -= (yearDifference * 3 * result) / 100;
     result = brandFactor(data.brand) * result;
