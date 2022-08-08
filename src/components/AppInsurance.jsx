@@ -5,7 +5,7 @@ import Result from './Result';
 
 const AppInsurance = () => {
   const { data, result, loading } = useQuoter();
-  console.log(Object.values(data).includes(''));
+
   return (
     <>
       <header className='my-10'>
