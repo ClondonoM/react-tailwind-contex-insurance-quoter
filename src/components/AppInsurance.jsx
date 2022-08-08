@@ -4,8 +4,8 @@ import Spinner from './Spinner';
 import Result from './Result';
 
 const AppInsurance = () => {
-  const { result, loading } = useQuoter();
-  console.log(result);
+  const { data, result, loading } = useQuoter();
+  console.log(Object.values(data).includes(''));
   return (
     <>
       <header className='my-10'>
@@ -15,7 +15,11 @@ const AppInsurance = () => {
       </header>
       <main className='bg-white md:w-2/3 lg:w2/4 mx-auto shadow rounded-lg p-10'>
         <Form />
-        {loading ? <Spinner /> : <Result />}
+        {Object.values(data).includes('') ? null : loading ? (
+          <Spinner />
+        ) : (
+          <Result />
+        )}
       </main>
     </>
   );
